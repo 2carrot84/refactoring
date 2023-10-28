@@ -28,8 +28,8 @@ public class CustomerTest {
 
         assertThat(customer.statement()).isEqualTo("Rental Record for 2carrot\n"
             + "\tmovie1\t5.0\n"
-            + "\tmovie2\t1.0\n"
-            + "Amount owed is 6.0\n"
+            + "\tmovie2\t1.5\n"
+            + "Amount owed is 6.5\n"
             + "You earned 2 frequent renter points");
     }
 
@@ -56,8 +56,8 @@ public class CustomerTest {
         assertThat(customer.htmlStatement()).isEqualTo(
             "<H1>Rental Record for <EM>2carrot</EM></H1><P>\n"
                 + "movie1: 5.0<BR>\n"
-                + "movie2: 1.0<BR>\n"
-                + "<P>You owe <EM>6.0<EM><P>\n"
+                + "movie2: 1.5<BR>\n"
+                + "<P>You owe <EM>6.5<EM><P>\n"
                 + "On this rental you earned <EM>2</EM> frequent renter points<P>");
     }
 }
