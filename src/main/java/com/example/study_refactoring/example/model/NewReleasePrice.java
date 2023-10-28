@@ -3,7 +3,7 @@ package com.example.study_refactoring.example.model;
 public class NewReleasePrice extends Price {
 
     @Override
-    int gePriceCode() {
+    int getPriceCode() {
         return Movie.NEW_RELEASE;
     }
 }
