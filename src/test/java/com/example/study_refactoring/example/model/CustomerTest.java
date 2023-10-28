@@ -22,7 +22,6 @@ public class CustomerTest {
             + "Amount owed is 5.0\n"
             + "You earned 1 frequent renter points");
 
-
         Rental rental2 = new Rental(new Movie("movie2", Movie.CHILDREN), 1);
 
         customer.addRental(rental2);
@@ -32,5 +31,33 @@ public class CustomerTest {
             + "\tmovie2\t1.0\n"
             + "Amount owed is 6.0\n"
             + "You earned 2 frequent renter points");
+    }
+
+    @Test
+    void htmlStatement() {
+        Customer customer = new Customer("2carrot");
+        assertThat(customer.htmlStatement()).isEqualTo(
+            "<H1>Rental Record for <EM>2carrot</EM></H1><P>\n"
+                + "<P>You owe <EM>0.0<EM><P>\n"
+                + "On this rental you earned <EM>0</EM> frequent renter points<P>");
+
+        Rental rental1 = new Rental(new Movie("movie1", Movie.REGULAR), 4);
+
+        customer.addRental(rental1);
+        assertThat(customer.htmlStatement()).isEqualTo(
+            "<H1>Rental Record for <EM>2carrot</EM></H1><P>\n"
+                + "movie1: 5.0<BR>\n"
+                + "<P>You owe <EM>5.0<EM><P>\n"
+                + "On this rental you earned <EM>1</EM> frequent renter points<P>");
+
+        Rental rental2 = new Rental(new Movie("movie2", Movie.CHILDREN), 1);
+
+        customer.addRental(rental2);
+        assertThat(customer.htmlStatement()).isEqualTo(
+            "<H1>Rental Record for <EM>2carrot</EM></H1><P>\n"
+                + "movie1: 5.0<BR>\n"
+                + "movie2: 1.0<BR>\n"
+                + "<P>You owe <EM>6.0<EM><P>\n"
+                + "On this rental you earned <EM>2</EM> frequent renter points<P>");
     }
 }
