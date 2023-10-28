@@ -39,10 +39,7 @@ public class Customer {
         String result = "Rental Record for " + get_name() + "\n";
 
         while (retals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = retals.nextElement();
-
-            thisAmount = amountFor(each);
 
             frequentRenterPoints++;
             if ((each.get_movie().get_priceCode() == Movie.NEW_RELEASE)
@@ -51,17 +48,13 @@ public class Customer {
             }
 
             result += "\t" + each.get_movie().get_title() + "\t" +
-                String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+                String.valueOf(each.getCharge(each)) + "\n";
+            totalAmount += each.getCharge(each);;
         }
 
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
 
         return result;
-    }
-
-    private double amountFor(Rental each) {
-        return each.getCharge(each);
     }
 }
