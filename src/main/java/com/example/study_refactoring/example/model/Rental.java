@@ -24,4 +24,27 @@ public class Rental {
     public void set_daysRented(int _daysRented) {
         this._daysRented = _daysRented;
     }
+
+    public double getCharge(Rental aRental) {
+        int result = 0;
+
+        switch (aRental.get_movie().get_priceCode()) {
+            case Movie.REGULAR:
+                result += 2;
+                if (aRental.get_daysRented() > 2) {
+                    result += (aRental.get_daysRented() - 2) * 1.5;
+                }
+                break;
+            case Movie.NEW_RELEASE:
+                result += aRental.get_daysRented() * 3;
+                break;
+            case Movie.CHILDREN:
+                result += 1.5;
+                if (aRental.get_daysRented() > 3) {
+                    result += (aRental.get_daysRented() - 3) * 1.5;
+                }
+                break;
+        }
+        return result;
+    }
 }
