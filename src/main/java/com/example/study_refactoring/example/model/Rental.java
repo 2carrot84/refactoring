@@ -49,11 +49,12 @@ public class Rental {
     }
 
     public int getFrequentRenterPoints() {
-        int frequentRenterPoints = 1;
-        if ((this.get_movie().get_priceCode() == Movie.NEW_RELEASE)
-            && this.get_daysRented() > 1) {
-            frequentRenterPoints++;
+        if ((get_movie().get_priceCode() == Movie.NEW_RELEASE)
+            && get_daysRented() > 1) {
+            return 2;
         }
-        return frequentRenterPoints;
+        else {
+            return 1;
+        }
     }
 }
